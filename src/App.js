@@ -6,6 +6,7 @@ import deputeselus from './constants/deputeselus';
 import Assembly from './Assembly/Assembly';
 import DeputyInfo from './DeputyInfo/DeputyInfo';
 import Filters from './Filters/Filters';
+import ColorBar from './ColorBar/ColorBar';
 
 class App extends Component {
   constructor(props) {
@@ -85,6 +86,8 @@ class App extends Component {
             <Overlay show={this.state.deputy !== null} target={this.state.target} container={() => ReactDOM.findDOMNode(this.refs.target)} placement='bottom'>
               <DeputyInfo deputy={this.state.deputy} />
             </Overlay>
+
+            <ColorBar data={this.state.deputies}/>
           </Col>
           <Col md={5}>
             <Filters onChange={this.handleFilter}></Filters>
