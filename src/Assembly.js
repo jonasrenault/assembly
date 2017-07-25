@@ -27,7 +27,7 @@ class Assembly extends Component {
     const circles = m.map((elt, idx) => <Seat key={elt.id} seat={elt} idx={idx} seats={seats} layout={this.props.layout}></Seat>);
 
     return (
-      <svg width={this.props.layout.width} height={this.props.layout.height} viewBox={viewBox}>
+      <svg width={this.props.layout.width} viewBox={viewBox}>
         <g transform={'translate(' + (this.props.layout.width / 2) + ',' + (this.props.layout.height - this.props.layout.margin.bottom) + ') rotate(180)'}>
           {circles}
         </g>
@@ -38,8 +38,8 @@ class Assembly extends Component {
 
 Assembly.defaultProps = {
   layout: {
-    width: 700,
-    height: 700,
+    width: 600,
+    height: 333,
     rows: 12,
     arc: 180,
     dotsize: 4,
