@@ -4,7 +4,7 @@ import { Form, FormGroup, Radio, Glyphicon, ControlLabel, Col, FormControl} from
 class Filters extends Component {
   constructor(props) {
     super(props);
-    this.state = {sexe: null};
+    this.state = {sexe: '', age: '', prem_election_depute: ''};
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -20,9 +20,9 @@ class Filters extends Component {
 
   clearFilter(filter) {
     this.setState({
-      [filter]: null
+      [filter]: ''
     });
-    this.props.onChange(filter, null);
+    this.props.onChange(filter, undefined);
   }
 
   render() {
@@ -97,7 +97,7 @@ class Filters extends Component {
             Age &lt;
           </Col>
           <Col sm={6}>
-            <FormControl type="number" name="age" placeholder="45" onChange={this.handleChange}/>
+            <FormControl type="number" name="age" placeholder="45" onChange={this.handleChange} value={this.state.age}/>
             <Glyphicon glyph="remove" onClick={() => this.clearFilter('age')}/>
           </Col>
         </FormGroup>
@@ -106,7 +106,7 @@ class Filters extends Component {
             Député depuis
           </Col>
           <Col sm={6}>
-            <FormControl type="number" name="prem_election_depute" min="1970" placeholder="1990" onChange={this.handleChange}/>
+            <FormControl type="number" name="prem_election_depute" min="1970" placeholder="1990" onChange={this.handleChange} value={this.state.prem_election_depute}/>
             <Glyphicon glyph="remove" onClick={() => this.clearFilter('prem_election_depute')}/>
           </Col>
         </FormGroup>
