@@ -1,22 +1,8 @@
-import React, { Component } from 'react';
-import Seat from './Seat';
+import React, { PureComponent } from 'react';
+import Seat from '../Seat/Seat';
+import { ordrepartis, sexorder } from '../constants/constants';
 
-const ordrepartis = {
-  'Gauche radicale': 1,
-  'PS, app et divers gauche': 2,
-  'LRM, Modem et app': 3,
-  'LR-UDI-Divers droite': 4,
-  'REM': 4.1,
-  'MDM': 4.2,
-  'Extrême droite': 6,
-  'Régionalistes': .5
-};
-const sexorder = {
-  'F': 1,
-  'M': 2
-};
-
-class Assembly extends Component {
+class Assembly extends PureComponent {
   render() {
     const viewBox = [0, 0, this.props.layout.width, this.props.layout.height].join(' ');
     const m = this.props.data.slice().sort((a, b) => {
@@ -24,7 +10,7 @@ class Assembly extends Component {
     });
     const seats = m.length;
 
-    const circles = m.map((elt, idx) => <Seat key={elt.id} seat={elt} idx={idx} seats={seats} layout={this.props.layout}></Seat>);
+    const circles = m.map((elt, idx) => <Seat key={elt.id} seat={elt} idx={idx} seats={seats} layout={this.props.layout} onSelectDeputy={this.props.onSelectDeputy}></Seat>);
 
     return (
       <svg width={this.props.layout.width} viewBox={viewBox}>

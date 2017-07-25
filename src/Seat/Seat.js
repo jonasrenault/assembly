@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { rgb } from 'd3-color';
+import { dico } from '../constants/constants';
 
-const dico = { "Extrême droite": { "couleur": "#7f6659", "long": "Extrême droite" }, "Gauche radicale": { "couleur": "#C84529", "long": "Gauche radicale" }, "LR-UDI-Divers droite": { "couleur": "#478cb2", "long": "Droite et centre" }, "LRM, Modem et app": { "couleur": "#e5c047", "long": "Majorité présidentielle" }, "PS, app et divers gauche": { "couleur": "#e4758f", "long": "Gauche socialiste" }, "Régionalistes": { "couleur": "#cccccc", "long": "Régionalistes" } };
 
 class Seat extends Component {
   constructor(props) {
     super(props);
-    this.state = {hovered: false};
+    this.state = {hovered: false, seat: null};
+    this.handleHover = this.handleHover.bind(this);
+  }
+
+  handleHover(hovered, seat, event) {
+    this.setState({hovered, seat});
+    if (hovered) {
+      this.props.onSelectDeputy(seat, event);
+    }
   }
 
   render() {
@@ -23,8 +31,8 @@ class Seat extends Component {
         stroke={this.state.hovered ? rgb(dico[seat.etiquette_pandore].couleur).darker(2) : '#FFF'}
         r={layout.dotsize}
         transform={`rotate(${angleScale(layoutPosition.column)}) translate(${distanceScale(layoutPosition.row)}, 0)`}
-        onMouseEnter={() => this.setState({hovered:true})}
-        onMouseOut={() => this.setState({hovered:false})}>
+        onMouseEnter={(e) => this.handleHover(true, seat, e)}
+        onMouseOut={(e) => this.handleHover(false, seat, e)}>
       </circle>
     );
   }

@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
-import { Grid, Navbar } from 'react-bootstrap';
+import ReactDOM from 'react-dom';
+import { Grid, Navbar, Overlay } from 'react-bootstrap';
 import './App.css';
-import deputeselus from './deputeselus';
-import Assembly from './Assembly';
+import deputeselus from './constants/deputeselus';
+import Assembly from './Assembly/Assembly';
+import DeputyInfo from './DeputyInfo/DeputyInfo';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {deputy: null};
+    this.handleSelectDeputy = this.handleSelectDeputy.bind(this);
+  }
+
+  handleSelectDeputy(deputy, event) {
+    this.setState({deputy: deputy, target: event.target});
+  }
+
   render() {
     return (
       <div>
@@ -19,7 +31,10 @@ class App extends Component {
           </Grid>
         </Navbar>
         <Grid className="main">
-          <Assembly data={deputeselus}/>
+          <Assembly data={deputeselus} onSelectDeputy={this.handleSelectDeputy} ref='assembly'/>
+          <Overlay show={this.state.deputy !== null} target={this.state.target} container={() => ReactDOM.findDOMNode(this.refs.target)} placement='bottom'>
+            <DeputyInfo deputy={this.state.deputy} />
+          </Overlay>
         </Grid>
       </div>
     );

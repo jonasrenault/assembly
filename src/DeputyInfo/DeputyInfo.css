@@ -1,0 +1,31 @@
+.deputy-info .bordered-left {
+  padding-left: 1rem;
+}
+
+.deputy-info .title {
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    font-weight: bold;
+    font-size: 1.4rem;
+    letter-spacing: .07rem;
+    margin: .5rem 0;
+}
+
+.deputy-info {
+    border-radius: 4px;
+    padding: 2rem;
+    position: absolute;
+    z-index: 9999;
+    max-width: 350px;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    border: 2px solid #ccd0d3!important;
+    background: #fff!important;
+    color: #222;
+    margin: 3rem 0;
+}
+
+.deputy-info .hr {
+  margin-top: 1rem;
+  border-top: 1px solid #e8eaee;
+  padding-bottom: 1rem;
+}
