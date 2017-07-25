@@ -80,13 +80,13 @@ class App extends Component {
           </Grid>
         </Navbar>
         <Grid className="main">
-          <Col xs={12} md={8}>
+          <Col md={7}>
             <Assembly data={this.state.deputies} onSelectDeputy={this.handleSelectDeputy} ref='assembly'/>
             <Overlay show={this.state.deputy !== null} target={this.state.target} container={() => ReactDOM.findDOMNode(this.refs.target)} placement='bottom'>
               <DeputyInfo deputy={this.state.deputy} />
             </Overlay>
           </Col>
-          <Col xs={6} md={4}>
+          <Col md={5}>
             <Filters onChange={this.handleFilter}></Filters>
           </Col>
         </Grid>
