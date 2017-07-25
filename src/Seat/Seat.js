@@ -3,7 +3,6 @@ import { scaleLinear } from 'd3-scale';
 import { rgb } from 'd3-color';
 import { dico } from '../constants/constants';
 
-
 class Seat extends Component {
   constructor(props) {
     super(props);
@@ -29,10 +28,13 @@ class Seat extends Component {
         className={`${seat.etiquette_interieur} siege`}
         fill={dico[seat.etiquette_pandore].couleur}
         stroke={this.state.hovered ? rgb(dico[seat.etiquette_pandore].couleur).darker(2) : '#FFF'}
-        r={layout.dotsize}
+        r={seat.active ? layout.dotsize * layout.ratiobulle : layout.dotsize / 1.5}
         transform={`rotate(${angleScale(layoutPosition.column)}) translate(${distanceScale(layoutPosition.row)}, 0)`}
         onMouseEnter={(e) => this.handleHover(true, seat, e)}
-        onMouseOut={(e) => this.handleHover(false, seat, e)}>
+        onMouseOut={(e) => this.handleHover(false, seat, e)}
+        pointerEvents={seat.active ? 'all' : 'none'}
+        strokeOpacity={seat.active ? 1 : .4}
+        fillOpacity={seat.active ? 1 : .4}>
       </circle>
     );
   }

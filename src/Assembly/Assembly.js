@@ -35,7 +35,8 @@ Assembly.defaultProps = {
       left: 6,
       right: 20
     },
-    rainbow: false
+    rainbow: false,
+    ratiobulle: 1.1
   }
 };
 
