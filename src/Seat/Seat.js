@@ -12,9 +12,7 @@ class Seat extends Component {
 
   handleHover(hovered, seat, event) {
     this.setState({hovered, seat});
-    if (hovered) {
-      this.props.onSelectDeputy(seat, event);
-    }
+    this.props.onSelectDeputy(seat, hovered, event.target);
   }
 
   render() {

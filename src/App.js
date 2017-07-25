@@ -20,8 +20,16 @@ class App extends Component {
     this.handleFilter = this.handleFilter.bind(this);
   }
 
-  handleSelectDeputy(deputy, event) {
-    this.setState({deputy: deputy, target: event.target});
+  handleSelectDeputy(deputy, selected, target) {
+    this.setState(prevState => {
+      const update = {target: target};
+      if (selected) {
+        update.deputy = deputy;
+      } else if (prevState.deputy && prevState.deputy.id === deputy.id) {
+        update.deputy = null;
+      }
+      return update;
+    });
   }
 
   handleFilter(filter, value) {

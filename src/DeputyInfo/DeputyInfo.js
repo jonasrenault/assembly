@@ -60,9 +60,9 @@ class DeputyInfo extends Component {
         <div className="hr"></div>
         <p>est né{genre} en {deputy.date_de_naissance.substring(6)} ({deputy.age} ans)</p>
         {ecole && <p>{ecole}</p>}
-        {deputy.deja_candidat === 'N' && <p>n'avait jamais été candidate{genre} à une éléction</p>}
+        {deputy.deja_candidat === 'N' && <p>n'avait jamais été candidat{genre} à une éléction</p>}
         {deputy.prem_election_depute > 0 && <p>élu{genre} pour la première fois en {deputy.prem_election_depute} ({deputy.nbr_mandats_deputes + 1} <sup>e</sup> mandat en juin 2017)</p>}
-        {mandatactuel.length > 0 && mandatancien.length > 0 && <div className="hr"></div>}
+        {(mandatactuel.length > 0 || mandatancien.length) > 0 && <div className="hr"></div>}
         {mandatactuel.length > 0 && <p>Mandat{mandatactuel.length > 0 ? 's' : ''} au moment de l'élection : {mandatactuel.join(', ')}</p>}
         {mandatancien.length > 0 && <p>Mandat{mandatancien.length > 0 ? 's' : ''} passé{mandatancien.length > 0 ? 's' : ''} : {mandatancien.join(', ')}</p>}
       </div>
