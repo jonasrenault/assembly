@@ -54,7 +54,7 @@ class App extends Component {
           <Grid>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="/">French National Assembly</a>
+                <a href="https://github.com/jonasrenault/assembly">French National Assembly</a>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
