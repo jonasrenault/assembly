@@ -34,7 +34,7 @@ class Search extends Component {
             onChange={this.handleChange}
           />
           {this.state.search &&
-            <Glyphicon glyph="remove" style={{pointerEvents: 'auto', cursor: 'pointer'}} className="form-control-feedback" onClick={this.clearSearch}/>}
+            <Glyphicon glyph="remove" style={{pointerEvents: 'auto', cursor: 'pointer', color: '#999'}} className="form-control-feedback" onClick={this.clearSearch}/>}
         </FormGroup>
       </form>
     )
