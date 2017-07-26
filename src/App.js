@@ -7,7 +7,7 @@ import Assembly from './Assembly/Assembly';
 import DeputyInfo from './DeputyInfo/DeputyInfo';
 import Filters from './Filters/Filters';
 import { filter } from './Filters/FilterUtils';
-import ColorBar from './ColorBar/ColorBar';
+// import ColorBar from './ColorBar/ColorBar';
 import Search from './Search/Search';
 
 class App extends Component {
@@ -67,7 +67,7 @@ class App extends Component {
               <DeputyInfo deputy={this.state.deputy} />
             </Overlay>
 
-            <ColorBar data={this.state.deputies}/>
+            {/* <ColorBar data={this.state.deputies}/> */}
           </Col>
           <Col md={5}>
             <Search onChange={this.handleSearch}/>

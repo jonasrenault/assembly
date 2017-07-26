@@ -79,7 +79,7 @@ class Filters extends Component {
         </FormGroup>
         <FormGroup>
           <Col componentClass={ControlLabel} sm={4}>
-            Enarque
+            Énarque
           </Col>
           <Col sm={6}>
             <Radio name='ena' value='Y' checked={this.state.ena === 'Y'} onChange={this.handleChange} inline>
