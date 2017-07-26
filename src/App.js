@@ -8,6 +8,7 @@ import DeputyInfo from './DeputyInfo/DeputyInfo';
 import Filters from './Filters/Filters';
 import { filter } from './Filters/FilterUtils';
 import ColorBar from './ColorBar/ColorBar';
+import Search from './Search/Search';
 
 class App extends Component {
   constructor(props) {
@@ -17,9 +18,11 @@ class App extends Component {
       return elt;
     });
     this.filters = {};
+    this.searchQuery = '';
     this.state = {deputy: null, deputies};
     this.handleSelectDeputy = this.handleSelectDeputy.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleSelectDeputy(deputy, selected, target) {
@@ -36,7 +39,12 @@ class App extends Component {
 
   handleFilter(filterKey, value) {
     this.filters[filterKey] = value;
-    this.setState({deputies: filter(deputeselus, this.filters)});
+    this.setState({deputies: filter(deputeselus, this.filters, this.searchQuery)});
+  }
+
+  handleSearch(query) {
+    this.searchQuery = query;
+    this.setState({deputies: filter(deputeselus, this.filters, this.searchQuery)});
   }
 
   render() {
@@ -62,6 +70,7 @@ class App extends Component {
             <ColorBar data={this.state.deputies}/>
           </Col>
           <Col md={5}>
+            <Search onChange={this.handleSearch}/>
             <Filters onChange={this.handleFilter}></Filters>
           </Col>
         </Grid>
