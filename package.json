@@ -16,6 +16,7 @@
     "d3-svg-legend": "2.24.1",
     "d3-transition": "1.1.0",
     "fuse.js": "3.0.5",
+    "gh-pages": "^1.0.0",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.1",
     "react-dom": "^15.6.1",
