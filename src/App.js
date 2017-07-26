@@ -6,6 +6,7 @@ import deputeselus from './constants/deputeselus';
 import Assembly from './Assembly/Assembly';
 import DeputyInfo from './DeputyInfo/DeputyInfo';
 import Filters from './Filters/Filters';
+import { filter } from './Filters/FilterUtils';
 import ColorBar from './ColorBar/ColorBar';
 
 class App extends Component {
@@ -33,38 +34,9 @@ class App extends Component {
     });
   }
 
-  handleFilter(filter, value) {
-    this.filters[filter] = value;
-    this.filter();
-  }
-
-  filter() {
-    const deputies = deputeselus.map(elt => {
-      let active = true;
-      if (this.filters.sexe && this.filters.sexe !== elt.sexe) {
-        active = false;
-      }
-      if (this.filters.sortant) {
-        active &= (this.filters.sortant === elt.sortant) || (this.filters.sortant !== 'Y' && elt.sortant !== 'Y');
-      }
-      if (this.filters.deja_ministre) {
-        const condition = elt.deja_ministre.indexOf('inistre') !== -1 || elt.deja_ministre.indexOf('ecréataire') !== -1;
-        active &= this.filters.deja_ministre === 'Y' ? condition : !condition;
-      }
-      if (this.filters.ena) {
-        const condition = elt.ecoles.indexOf('ENA') !== -1;
-        active &= this.filters.ena === 'Y' ? condition : !condition;
-      }
-      if (this.filters.age) {
-        active &= elt.age < this.filters.age;
-      }
-      if (this.filters.prem_election_depute) {
-        active &= elt.prem_election_depute > 0 && elt.prem_election_depute < this.filters.prem_election_depute;
-      }
-      elt.active = active;
-      return elt;
-    });
-    this.setState({deputies});
+  handleFilter(filterKey, value) {
+    this.filters[filterKey] = value;
+    this.setState({deputies: filter(deputeselus, this.filters)});
   }
 
   render() {
